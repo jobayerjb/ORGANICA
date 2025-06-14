@@ -42,10 +42,46 @@
       "settings": "SETTINGS"
     },
     "navbar": {
-    
-    "currency": "Currency",
-    "language": "Language"
-  },
+      "currency": "Currency",
+      "language": "Language"
+    },
+    "banner": {
+      "slide1": {
+        "title": "Fresh Organic Produce",
+        "subtitle": "Farm to Table Excellence",
+        "description": "Discover the finest organic fruits and vegetables, handpicked for quality and freshness."
+      },
+      "slide2": {
+        "title": "Natural & Pure",
+        "subtitle": "100% Organic Guarantee",
+        "description": "All our products are certified organic, free from harmful pesticides and chemicals."
+      },
+      "slide3": {
+        "title": "Sustainable Farming",
+        "subtitle": "Eco-Friendly Choices",
+        "description": "Supporting local farmers and sustainable agricultural practices for a better tomorrow."
+      },
+      "shopButton": "Shop Now",
+      "learnButton": "Learn More",
+      "startingAt": "Starting at",
+      "prevSlide": "Previous slide",
+      "nextSlide": "Next slide",
+      "goToSlide": "Go to slide"
+    },
     "copyright": "&copy; {{year}} Organica. All rights reserved."
+  },
+  "services": {
+    "quality": {
+      "title": "Quality Products",
+      "description": "Our products are certified organic, grown without pesticides or harmful chemicals for your health and safety."
+    },
+    "delivery": {
+      "title": "Home Delivery",
+      "description": "Fast and reliable delivery straight to your doorstep within 24 hours of ordering."
+    },
+    "returns": {
+      "title": "Easy Returns",
+      "description": "30-day hassle-free return policy if you're not completely satisfied with your purchase."
+    }
   }
 }
