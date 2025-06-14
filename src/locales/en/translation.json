@@ -41,6 +41,11 @@
       "wishlist": "WISHLIST",
       "settings": "SETTINGS"
     },
+    "navbar": {
+    
+    "currency": "Currency",
+    "language": "Language"
+  },
     "copyright": "&copy; {{year}} Organica. All rights reserved."
   }
 }

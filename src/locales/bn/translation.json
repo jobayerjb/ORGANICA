@@ -41,6 +41,10 @@
       "wishlist": "ইচ্ছেতালিকা",
       "settings": "সেটিংস"
     },
+    "navbar": {
+    "currency": "মুদ্রা",
+    "language": "ভাষা"
+  },
     "copyright": "&copy; {{year}} অর্গানিকা। সর্বস্বত্ব সংরক্ষিত।"
   }
 }

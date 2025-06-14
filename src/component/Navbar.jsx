@@ -1,15 +1,26 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 import { useTranslation } from 'react-i18next';
+import { useCurrency } from '../context/CurrencyContext';
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const { currency, changeCurrency, convertPrice, getCurrencySymbol } = useCurrency();
   
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     document.documentElement.lang = lng;
+    
+    // Automatically change currency when language changes
+    if (lng === 'bn') {
+      changeCurrency('BDT');
+    } else {
+      changeCurrency('USD');
+    }
   };
 
   // Navigation links data using translations
@@ -18,6 +29,14 @@ const Navbar = () => {
     { name: t('navbar.about'), path: '/about' },
     { name: t('navbar.products'), path: '/products' },
     { name: t('navbar.contact'), path: '/contact' }
+  ];
+
+  // Currency options
+  const currencies = [
+    { code: 'USD', symbol: '$', name: 'US Dollar' },
+    { code: 'EUR', symbol: '€', name: 'Euro' },
+    { code: 'GBP', symbol: '£', name: 'British Pound' },
+    { code: 'BDT', symbol: '৳', name: 'Bangladeshi Taka' },
   ];
 
   return (
@@ -71,14 +90,38 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <select 
-            onChange={(e) => changeLanguage(e.target.value)}
-            value={i18n.language}
-            className="mt-2 p-2 rounded border border-gray-300"
-          >
-            <option value="en">English</option>
-            <option value="bn">বাংলা</option>
-          </select>
+          {/* Currency Selector for Mobile */}
+          <div className="mt-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              {t('navbar.currency')}
+            </label>
+            <select 
+              value={currency}
+              onChange={(e) => changeCurrency(e.target.value)}
+              className="w-full p-2 rounded border border-gray-300"
+            >
+              {currencies.map((curr) => (
+                <option key={curr.code} value={curr.code}>
+                  {curr.symbol} {curr.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          
+          {/* Language Selector */}
+          <div className="mt-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              {t('navbar.language')}
+            </label>
+            <select 
+              onChange={(e) => changeLanguage(e.target.value)}
+              value={i18n.language}
+              className="w-full p-2 rounded border border-gray-300"
+            >
+              <option value="en">English</option>
+              <option value="bn">বাংলা</option>
+            </select>
+          </div>
           
           <div className="mt-4 pt-4 border-t">
             <span className="font-medium text-gray-700">
@@ -102,88 +145,136 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center justify-between p-4">
-        {/* Left Section - Phone and Search */}
-        <div className="flex items-center gap-6">
-          <span className="font-medium text-gray-700">
-            {t('navbar.phone')}: +880 1234-567890
-          </span>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder={t('navbar.search')}
-              className="w-32 h-8 rounded border border-gray-300 px-2 text-sm"
-            />
-            <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="7" cy="7" r="6" />
-                <path d="M12 12l-3-3" />
+      {/* Desktop Navigation - Two Rows */}
+      <div className="hidden md:flex flex-col">
+        {/* Top Row - Phone, Search, Currency & Language */}
+        <div className="flex items-center justify-between p-4 bg-gray-50">
+          <div className="flex items-center gap-6">
+            <span className="font-medium text-gray-700">
+              {t('navbar.phone')}: +880 1234-567890
+            </span>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder={t('navbar.search')}
+                className="w-48 h-10 rounded-full border border-gray-300 px-4 text-sm"
+              />
+              <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="7" cy="7" r="6" />
+                  <path d="M12 12l-3-3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            {/* Currency Selector */}
+            <div className="relative group">
+              <button className="flex items-center text-gray-700 group-hover:text-green-600 transition-colors">
+                <span>{getCurrencySymbol()}</span>
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-10">
+                {currencies.map((curr) => (
+                  <button 
+                    key={curr.code}
+                    onClick={() => changeCurrency(curr.code)}
+                    className={`block w-full text-left px-4 py-2 hover:bg-green-50 ${
+                      currency === curr.code ? 'text-green-600 font-medium' : ''
+                    }`}
+                  >
+                    {curr.symbol} {curr.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            {/* Language Selector */}
+            <div className="relative group">
+              <button className="flex items-center text-gray-700 group-hover:text-green-600 transition-colors">
+                <span>
+                  {i18n.language === 'en' ? 'English' : 'বাংলা'}
+                </span>
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-10">
+                <button 
+                  onClick={() => changeLanguage('en')}
+                  className={`block w-full text-left px-4 py-2 hover:bg-green-50 ${
+                    i18n.language === 'en' ? 'text-green-600 font-medium' : ''
+                  }`}
+                >
+                  English
+                </button>
+                <button 
+                  onClick={() => changeLanguage('bn')}
+                  className={`block w-full text-left px-4 py-2 hover:bg-green-50 ${
+                    i18n.language === 'bn' ? 'text-green-600 font-medium' : ''
+                  }`}
+                >
+                  বাংলা
+                </button>
+              </div>
+            </div>
+            
+            {/* Cart */}
+            <button className="relative hover:animate-shake">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
+              <span className="absolute top-[-6px] right-[-6px] bg-red-600 text-white rounded-full px-1 text-xs">
+                0
+              </span>
             </button>
           </div>
         </div>
 
-        {/* Center Section - Navigation Links and Logo */}
-        <div className="flex items-center gap-8">
-          <Link
-            to="/"
-            className="font-medium text-gray-700 hover:text-green-500 
-                     transition-colors duration-300 hover:animate-shake"
-          >
-            {t('navbar.home')}
-          </Link>
-          <Link
-            to="/about"
-            className="font-medium text-gray-700 hover:text-green-500 
-                     transition-colors duration-300 hover:animate-shake"
-          >
-            {t('navbar.about')}
-          </Link>
+        {/* Bottom Row - Logo and Navigation Links */}
+        <div className="flex items-center justify-center p-4">
+          <div className="flex items-center gap-10">
+            <Link
+              to="/"
+              className="font-medium text-gray-700 hover:text-green-500 
+                       transition-colors duration-300 hover:animate-shake"
+            >
+              {t('navbar.home')}
+            </Link>
+            <Link
+              to="/about"
+              className="font-medium text-gray-700 hover:text-green-500 
+                       transition-colors duration-300 hover:animate-shake"
+            >
+              {t('navbar.about')}
+            </Link>
 
-          <Link to="/" className="hover:animate-shake">
-            <img src={logo} alt="Logo" className="h-10" />
-          </Link>
+            <Link to="/" className="hover:animate-shake">
+              <img src={logo} alt="Logo" className="h-16" />
+            </Link>
 
-          <Link
-            to="/products"
-            className="font-medium text-gray-700 hover:text-green-500 
-                     transition-colors duration-300 hover:animate-shake"
-          >
-            {t('navbar.products')}
-          </Link>
-          <Link
-            to="/contact"
-            className="font-medium text-gray-700 hover:text-green-500 
-                     transition-colors duration-300 hover:animate-shake"
-          >
-            {t('navbar.contact')}
-          </Link>
+            <Link
+              to="/products"
+              className="font-medium text-gray-700 hover:text-green-500 
+                       transition-colors duration-300 hover:animate-shake"
+            >
+              {t('navbar.products')}
+            </Link>
+            <Link
+              to="/contact"
+              className="font-medium text-gray-700 hover:text-green-500 
+                       transition-colors duration-300 hover:animate-shake"
+            >
+              {t('navbar.contact')}
+            </Link>
+          </div>
         </div>
-
-        {/* Right Section - Language and Cart */}
-        <div className="flex items-center gap-4">
-          <select 
-            onChange={(e) => changeLanguage(e.target.value)}
-            value={i18n.language}
-            className="p-1 rounded border border-gray-300 text-sm cursor-pointer"
-          >
-            <option value="en">English</option>
-            <option value="bn">বাংলা</option>
-          </select>
-          
-          <button className="relative hover:animate-shake">
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            <span className="absolute top-[-6px] right-[-6px] bg-red-600 text-white rounded-full px-1 text-xs">
-              0
-            </span>
-          </button>
-        </div>
-      </div>
+      </div>    
     </nav>
   );
 };

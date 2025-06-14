@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Face Cream",
+    "nameBn": "অর্গানিক ফেস ক্রিম",
+    "price": 24.99,
+    "rating": 4,
+    "color": "#FFE5D9"
+  },
+  {
+    "id": 2,
+    "name": "Natural Body Wash",
+    "nameBn": "প্রাকৃতিক বডি ওয়াশ",
+    "price": 18.50,
+    "rating": 5,
+    "color": "#D8E2DC"
+  },
+  {
+    "id": 3,
+    "name": "Herbal Shampoo",
+    "nameBn": "ভেষজ শ্যাম্পু",
+    "price": 15.75,
+    "rating": 3,
+    "color": "#FFCAD4"
+  },
+  {
+    "id": 4,
+    "name": "Essential Oil Set",
+    "nameBn": "এসেনশিয়াল অয়েল সেট",
+    "price": 32.99,
+    "rating": 4,
+    "color": "#F4ACB7"
+  },
+  {
+    "id": 5,
+    "name": "Organic Soap Bar",
+    "nameBn": "অর্গানিক সোপ বার",
+    "price": 8.99,
+    "rating": 5,
+    "color": "#9D8189"
+  },
+  {
+    "id": 6,
+    "name": "Hair Conditioner",
+    "nameBn": "হেয়ার কন্ডিশনার",
+    "price": 22.50,
+    "rating": 4,
+    "color": "#D6EADF"
+  },
+  {
+    "id": 7,
+    "name": "Skin Moisturizer",
+    "nameBn": "স্কিন ময়েশ্চারাইজার",
+    "price": 28.25,
+    "rating": 5,
+    "color": "#B8E0D2"
+  }
+]
