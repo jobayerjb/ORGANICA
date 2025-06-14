@@ -5,7 +5,42 @@
     "products": "পণ্য",
     "contact": "যোগাযোগ",
     "phone": "ফোন",
-    "search": "খুঁজুন..."
+    "search": "খুঁজুন...",
+    "cart": "কার্ট"
   },
-  "welcome": "আমাদের ওয়েবসাইটে স্বাগতম!"
+  "footer": {
+    "extras": {
+      "title": "অতিরিক্ত",
+      "brands": "ব্র্যান্ডস",
+      "gift_vouchers": "গিফট ভাউচার",
+      "affiliates": "অ্যাফিলিয়েটস",
+      "our_service": "আমাদের সেবা",
+      "special": "বিশেষ"
+    },
+    "products": {
+      "title": "পণ্য",
+      "price_drop": "দাম কমেছে",
+      "new_products": "নতুন পণ্য",
+      "best_sales": "সেরা বিক্রয়",
+      "contact_us": "যোগাযোগ করুন",
+      "sitemap": "সাইটম্যাপ"
+    },
+    "our_company": {
+      "title": "আমাদের কোম্পানি",
+      "delivery": "ডেলিভারি",
+      "legal_notice": "আইনি বিজ্ঞপ্তি",
+      "about_us": "আমাদের সম্পর্কে",
+      "contact_us": "যোগাযোগ করুন",
+      "stores": "স্টোর"
+    },
+    "your_account": {
+      "title": "আপনার অ্যাকাউন্ট",
+      "login": "লগইন",
+      "register": "নিবন্ধন",
+      "orders": "অর্ডার",
+      "wishlist": "ইচ্ছেতালিকা",
+      "settings": "সেটিংস"
+    },
+    "copyright": "&copy; {{year}} অর্গানিকা। সর্বস্বত্ব সংরক্ষিত।"
+  }
 }

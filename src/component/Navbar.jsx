@@ -7,13 +7,12 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   
-  // Function to change language
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     document.documentElement.lang = lng;
   };
 
-  // Navigation links data
+  // Navigation links data using translations
   const navLinks = [
     { name: t('navbar.home'), path: '/' },
     { name: t('navbar.about'), path: '/about' },
@@ -25,7 +24,6 @@ const Navbar = () => {
     <nav className="max-w-[1300px] mx-auto bg-white shadow-md">
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between p-4">
-        {/* Hamburger Menu Button */}
         <button 
           className="p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -42,12 +40,10 @@ const Navbar = () => {
           )}
         </button>
         
-        {/* Logo */}
         <Link to="/" onClick={() => setIsMenuOpen(false)}>
           <img src={logo} alt="Logo" className="h-10" />
         </Link>
         
-        {/* Cart Icon */}
         <button className="relative p-2">
           <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="9" cy="21" r="1" />
@@ -58,12 +54,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Toggle based on state */}
+      {/* Mobile Menu */}
       <div 
         className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} p-4 border-t transition-all duration-300`}
       >
         <div className="flex flex-col gap-3">
-          {/* Navigation Links */}
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -76,7 +71,6 @@ const Navbar = () => {
             </Link>
           ))}
           
-          {/* Language Selector */}
           <select 
             onChange={(e) => changeLanguage(e.target.value)}
             value={i18n.language}
@@ -86,14 +80,12 @@ const Navbar = () => {
             <option value="bn">বাংলা</option>
           </select>
           
-          {/* Phone Number */}
           <div className="mt-4 pt-4 border-t">
             <span className="font-medium text-gray-700">
               {t('navbar.phone')}: +880 1234-567890
             </span>
           </div>
           
-          {/* Search Input */}
           <div className="relative mt-2">
             <input
               type="text"
@@ -134,46 +126,39 @@ const Navbar = () => {
 
         {/* Center Section - Navigation Links and Logo */}
         <div className="flex items-center gap-8">
-          {/* Left Links */}
-          <div className="flex gap-6">
-            <Link
-              to="/"
-              className="font-medium text-gray-700 hover:text-green-500 
-                         transition-colors duration-300 hover:animate-shake"
-            >
-              {t('navbar.home')}
-            </Link>
-            <Link
-              to="/about"
-              className="font-medium text-gray-700 hover:text-green-500 
-                         transition-colors duration-300 hover:animate-shake"
-            >
-              {t('navbar.about')}
-            </Link>
-          </div>
+          <Link
+            to="/"
+            className="font-medium text-gray-700 hover:text-green-500 
+                     transition-colors duration-300 hover:animate-shake"
+          >
+            {t('navbar.home')}
+          </Link>
+          <Link
+            to="/about"
+            className="font-medium text-gray-700 hover:text-green-500 
+                     transition-colors duration-300 hover:animate-shake"
+          >
+            {t('navbar.about')}
+          </Link>
 
-          {/* Logo */}
           <Link to="/" className="hover:animate-shake">
             <img src={logo} alt="Logo" className="h-10" />
           </Link>
 
-          {/* Right Links */}
-          <div className="flex gap-6">
-            <Link
-              to="/products"
-              className="font-medium text-gray-700 hover:text-green-500 
-                         transition-colors duration-300 hover:animate-shake"
-            >
-              {t('navbar.products')}
-            </Link>
-            <Link
-              to="/contact"
-              className="font-medium text-gray-700 hover:text-green-500 
-                         transition-colors duration-300 hover:animate-shake"
-            >
-              {t('navbar.contact')}
-            </Link>
-          </div>
+          <Link
+            to="/products"
+            className="font-medium text-gray-700 hover:text-green-500 
+                     transition-colors duration-300 hover:animate-shake"
+          >
+            {t('navbar.products')}
+          </Link>
+          <Link
+            to="/contact"
+            className="font-medium text-gray-700 hover:text-green-500 
+                     transition-colors duration-300 hover:animate-shake"
+          >
+            {t('navbar.contact')}
+          </Link>
         </div>
 
         {/* Right Section - Language and Cart */}

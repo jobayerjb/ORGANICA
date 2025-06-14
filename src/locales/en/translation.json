@@ -5,7 +5,42 @@
     "products": "Products",
     "contact": "Contact",
     "phone": "Phone",
-    "search": "Search..."
+    "search": "Search...",
+    "cart": "Cart"
   },
-  "welcome": "Welcome to our website!"
+  "footer": {
+    "extras": {
+      "title": "EXTRAS",
+      "brands": "BRANDS",
+      "gift_vouchers": "GIFT VOUCHERS",
+      "affiliates": "AFFILIATES",
+      "our_service": "OUR SERVICE",
+      "special": "SPECIAL"
+    },
+    "products": {
+      "title": "PRODUCTS",
+      "price_drop": "PRICE DROP",
+      "new_products": "NEW PRODUCTS",
+      "best_sales": "BEST SALES",
+      "contact_us": "CONTACT US",
+      "sitemap": "SITEMAP"
+    },
+    "our_company": {
+      "title": "OUR COMPANY",
+      "delivery": "DELIVERY",
+      "legal_notice": "LEGAL NOTICE",
+      "about_us": "ABOUT US",
+      "contact_us": "CONTACT US",
+      "stores": "STORES"
+    },
+    "your_account": {
+      "title": "YOUR ACCOUNT",
+      "login": "LOGIN",
+      "register": "REGISTER",
+      "orders": "ORDERS",
+      "wishlist": "WISHLIST",
+      "settings": "SETTINGS"
+    },
+    "copyright": "&copy; {{year}} Organica. All rights reserved."
+  }
 }
