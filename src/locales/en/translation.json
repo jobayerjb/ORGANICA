@@ -45,30 +45,31 @@
       "currency": "Currency",
       "language": "Language"
     },
-    "banner": {
-      "slide1": {
-        "title": "Fresh Organic Produce",
-        "subtitle": "Farm to Table Excellence",
-        "description": "Discover the finest organic fruits and vegetables, handpicked for quality and freshness."
-      },
-      "slide2": {
-        "title": "Natural & Pure",
-        "subtitle": "100% Organic Guarantee",
-        "description": "All our products are certified organic, free from harmful pesticides and chemicals."
-      },
-      "slide3": {
-        "title": "Sustainable Farming",
-        "subtitle": "Eco-Friendly Choices",
-        "description": "Supporting local farmers and sustainable agricultural practices for a better tomorrow."
-      },
-      "shopButton": "Shop Now",
-      "learnButton": "Learn More",
-      "startingAt": "Starting at",
-      "prevSlide": "Previous slide",
-      "nextSlide": "Next slide",
-      "goToSlide": "Go to slide"
-    },
+
     "copyright": "&copy; {{year}} Organica. All rights reserved."
+  },
+  "banner": {
+    "slide1": {
+      "title": "Fresh Organic Produce",
+      "subtitle": "Farm to Table Excellence",
+      "description": "Discover the finest organic fruits and vegetables, handpicked for quality and freshness."
+    },
+    "slide2": {
+      "title": "Natural & Pure",
+      "subtitle": "100% Organic Guarantee",
+      "description": "All our products are certified organic, free from harmful pesticides and chemicals."
+    },
+    "slide3": {
+      "title": "Sustainable Farming",
+      "subtitle": "Eco-Friendly Choices",
+      "description": "Supporting local farmers and sustainable agricultural practices for a better tomorrow."
+    },
+    "shopButton": "Shop Now",
+    "learnButton": "Learn More",
+    "startingAt": "Starting at",
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide"
   },
   "services": {
     "quality": {
@@ -82,6 +83,143 @@
     "returns": {
       "title": "Easy Returns",
       "description": "30-day hassle-free return policy if you're not completely satisfied with your purchase."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Crafting Excellence, One Product at a Time",
+      "subtitle": "We're passionate about creating premium products that enhance your daily life with innovative design and uncompromising quality.",
+      "cta1": "Shop Collection",
+      "cta2": "Learn More"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To redefine everyday experiences through thoughtfully designed products that combine functionality, sustainability, and aesthetic appeal. We believe in creating items that stand the test of time."
+    },
+    "values": {
+      "innovation": {
+        "title": "Innovation",
+        "desc": "We constantly push boundaries to develop cutting-edge solutions that anticipate your evolving needs and exceed expectations."
+      },
+      "quality": {
+        "title": "Quality Craftsmanship",
+        "desc": "Every product undergoes rigorous testing and meticulous hand-finishing to ensure exceptional durability and performance."
+      },
+      "sustainability": {
+        "title": "Sustainable Practices",
+        "desc": "We're committed to eco-friendly manufacturing, ethical sourcing, and minimizing our environmental footprint at every step."
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "From humble beginnings to industry leaders - milestones that shaped our story"
+    },
+    "milestones": {
+      "2015": {
+        "title": "Company Founded",
+        "desc": "Launched with a small workshop and a vision to create exceptional everyday products"
+      },
+      "2018": {
+        "title": "Product Line Expansion",
+        "desc": "Introduced three new collections that quickly became customer favorites"
+      },
+      "2020": {
+        "title": "Sustainability Initiative",
+        "desc": "Achieved carbon-neutral certification and implemented zero-waste manufacturing"
+      },
+      "2023": {
+        "title": "Global Recognition",
+        "desc": "Received international design awards and expanded to 20+ countries worldwide"
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The passionate minds behind our products",
+      "member1": {
+        "name": "Sarah Johnson",
+        "role": "Founder & CEO",
+        "bio": "With 15+ years in product design, Sarah leads our vision for innovation and quality."
+      },
+      "member2": {
+        "name": "David Chen",
+        "role": "Head of Sustainability",
+        "bio": "David ensures our materials and processes meet the highest environmental standards."
+      },
+      "member3": {
+        "name": "Aisha Rahman",
+        "role": "Creative Director",
+        "bio": "Aisha's designs blend functionality with timeless aesthetic appeal."
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Excellence?",
+      "subtitle": "Join thousands of satisfied customers enjoying our premium products",
+      "button1": "Shop Now",
+      "button2": "Contact Us"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "We'd Love to Hear From You",
+      "subtitle": "Have questions about our premium products or services? Our team is ready to assist you."
+    },
+    "info": {
+      "title": "Get In Touch",
+      "description": "Our customer service team is available to answer your questions and provide assistance. Reach out to us through any of these channels:"
+    },
+    "methods": {
+      "phone": {
+        "title": "Call Us",
+        "details": "+880 1902971706",
+        "action": "Call Now"
+      },
+      "email": {
+        "title": "Email Us",
+        "details": "jobayerhasanofficial@gmail.com",
+        "action": "Send Email"
+      },
+      "address": {
+        "title": "Visit Us",
+        "details": "Nobinagar, Dhaka 1344, Bangladesh",
+        "action": "Get Directions"
+      }
+    },
+    "social": {
+      "title": "Connect With Us"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Your Message",
+      "messagePlaceholder": "Tell us about your inquiry...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you! Your message has been sent successfully."
+    },
+    "location": {
+      "title": "Visit Our Flagship Store",
+      "description": "Experience our premium products firsthand at our flagship location in Dhaka"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find quick answers to common questions about our products and services",
+      "questions": {
+        "q1": "What is your return policy?",
+        "q2": "How long does shipping take?",
+        "q3": "Do you offer international shipping?",
+        "q4": "Can I customize products?"
+      },
+      "answers": {
+        "a1": "We offer a 30-day return policy for all unused products in original packaging. Return shipping is free for domestic orders.",
+        "a2": "Standard shipping takes 3-5 business days within Bangladesh. Express shipping options are available at checkout.",
+        "a3": "Yes, we ship to over 50 countries worldwide. International shipping rates and times vary by destination.",
+        "a4": "Many of our premium products can be customized. Contact our support team to discuss your specific requirements."
+      }
     }
   }
 }

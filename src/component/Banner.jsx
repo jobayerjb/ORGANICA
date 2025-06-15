@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { t } = useTranslation();
-  const { currency, convertPrice, getCurrencySymbol } = useCurrency();
+  const { convertPrice, getCurrencySymbol } = useCurrency();
 
   // Use memo to recreate slides when translations or currency changes
   const slides = useMemo(() => {
@@ -14,23 +14,23 @@ const Banner = () => {
     return [
       {
         bg: "bg-gradient-to-r from-green-500 to-green-700",
-        title: t("footer.banner.slide1.title"),
-        subtitle: t("footer.banner.slide1.subtitle"),
-        description: t("footer.banner.slide1.description"),
+        title: t("banner.slide1.title"),
+        subtitle: t("banner.slide1.subtitle"),
+        description: t("banner.slide1.description"),
         price: samplePrice,
       },
       {
         bg: "bg-gradient-to-r from-blue-500 to-blue-700",
-        title: t("footer.banner.slide2.title"),
-        subtitle: t("footer.banner.slide2.subtitle"),
-        description: t("footer.banner.slide2.description"),
+        title: t("banner.slide2.title"),
+        subtitle: t("banner.slide2.subtitle"),
+        description: t("banner.slide2.description"),
         price: samplePrice,
       },
       {
         bg: "bg-gradient-to-r from-purple-500 to-purple-700",
-        title: t("footer.banner.slide3.title"),
-        subtitle: t("footer.banner.slide3.subtitle"),
-        description: t("footer.banner.slide3.description"),
+        title: t("banner.slide3.title"),
+        subtitle: t("banner.slide3.subtitle"),
+        description: t("banner.slide3.description"),
         price: samplePrice,
       },
     ];
@@ -38,6 +38,8 @@ const Banner = () => {
 
   // Auto-advance slides every 5 seconds
   useEffect(() => {
+    if (slides.length === 0) return;
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -64,12 +66,14 @@ const Banner = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-            index === currentSlide ? "opacity-100 z-0" : "opacity-0 z-0"
+            index === currentSlide
+              ? "opacity-100 z-0"
+              : "opacity-0 z-0 pointer-events-none"
           } ${slide.bg}`}
         >
           <div className="flex items-center justify-center h-full text-white px-4">
             <div className="text-center max-w-4xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">
                 {slide.title}
               </h1>
               <h2 className="text-xl md:text-3xl mb-4 font-light">
@@ -81,23 +85,23 @@ const Banner = () => {
 
               {/* Dynamic Price Display */}
               <div className="mb-8 text-xl font-bold">
-                {t("footer.banner.startingAt")} {getCurrencySymbol()}
-                {slide.price}
+                {t("banner.startingAt")} {getCurrencySymbol()}
+                {slide.price.toFixed(2)}
               </div>
 
-              <div className="space-x-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   to="/products"
                   className="inline-block bg-white text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                 >
-                  {t("footer.banner.shopButton")}
+                  {t("banner.shopButton")}
                 </Link>
 
                 <Link
                   to="/about"
                   className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-800 transition-all duration-300"
                 >
-                  {t("footer.banner.learnButton")}
+                  {t("banner.learnButton")}
                 </Link>
               </div>
             </div>
@@ -109,13 +113,14 @@ const Banner = () => {
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 hover:bg-opacity-60 text-white p-3 rounded-full transition-all duration-300 z-10"
-        aria-label={t("footer.banner.prevSlide")}
+        aria-label={t("banner.prevSlide")}
       >
         <svg
           className="w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             strokeLinecap="round"
@@ -129,13 +134,14 @@ const Banner = () => {
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 hover:bg-opacity-60 text-white p-3 rounded-full transition-all duration-300 z-10"
-        aria-label={t("footer.banner.nextSlide")}
+        aria-label={t("banner.nextSlide")}
       >
         <svg
           className="w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             strokeLinecap="round"
@@ -147,25 +153,30 @@ const Banner = () => {
       </button>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? "bg-white scale-125"
-                : "bg-white bg-opacity-50 hover:bg-opacity-75"
-            }`}
-            aria-label={`${t("footer.banner.goToSlide")} ${index + 1}`}
-          />
-        ))}
-      </div>
+      {slides.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? "bg-white scale-125"
+                  : "bg-white bg-opacity-50 hover:bg-opacity-75"
+              }`}
+              aria-label={`${t("banner.goToSlide")} ${index + 1}`}
+              aria-current={index === currentSlide ? "true" : "false"}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Slide Counter */}
-      <div className="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm z-10">
-        {currentSlide + 1} / {slides.length}
-      </div>
+      {slides.length > 1 && (
+        <div className="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm z-10">
+          {currentSlide + 1} / {slides.length}
+        </div>
+      )}
     </div>
   );
 };
